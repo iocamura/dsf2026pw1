@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BiblioTech · Galeria</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<style>
+  :root{
+    --navy: #10233F;
+    --teal: #1FA2A6;
+    --off: #F2F5F7;
+    --coral: #EF6461;
+    --slate: #45526B;
+  }
+  body{
+    background: var(--off);
+    color: var(--navy);
+    font-family: 'Work Sans', sans-serif;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  h1,h2,.brand{ font-family: 'Space Grotesk', sans-serif; }
+
+  #menuLateral{
+    width: 250px;
+    background: var(--navy);
+    color: var(--off);
+  }
+  #menuLateral .brand{
+    padding: 1.5rem 1.25rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--teal);
+    display: block;
+  }
+  #menuLateral li a{
+    color: var(--off) !important;
+    font-family: 'Work Sans', sans-serif;
+  }
+  #menuLateral li a:hover{
+    background: var(--slate);
+  }
+  #menuLateral li a.active-link{
+    border-left: 4px solid var(--coral);
+    background: rgba(239,100,97,0.1);
+  }
+  #menuLateral ul{
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0;
+  }
+  #menuLateral li a{
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.9rem 1.25rem;
+    line-height: 1;
+  }
+  #menuLateral li a i.material-icons{
+    width: 24px;
+    text-align: center;
+    margin: 0;
+    float: none;
+    font-size: 1.3rem;
+  }
+
+  nav.top-mobile{
+    background: var(--navy) !important;
+    display: none;
+  }
+
+  main{ flex: 1; }
+
+  .hero-galeria{
+    background: linear-gradient(120deg, var(--navy), var(--slate));
+    color: var(--off);
+    padding: 3rem 2rem;
+    border-bottom: 5px solid var(--coral);
+  }
+  .hero-galeria h1{ font-size: 2.2rem; font-weight:700; }
+  .hero-galeria p{ max-width: 46ch; opacity:0.9; line-height:1.6; }
+
+  .carrossel-wrap{
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+  }
+  .carrossel{
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(16,35,63,0.15);
+  }
+  .carrossel-track{
+    display: flex;
+    transition: transform 0.4s ease;
+  }
+  .slide{
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 3rem 2rem;
+    text-align: center;
+    color: white;
+  }
+  .slide h3{ font-family:'Space Grotesk', sans-serif; font-size:1.5rem; margin-bottom:0.5rem;}
+  .slide .capa{ font-size: 3.5rem; }
+  .slide-1{ background: linear-gradient(135deg,#1FA2A6,#10233F); }
+  .slide-2{ background: linear-gradient(135deg,#EF6461,#45526B); }
+  .slide-3{ background: linear-gradient(135deg,#45526B,#10233F); }
+  .slide-4{ background: linear-gradient(135deg,#10233F,#1FA2A6); }
+
+  .carrossel-btn{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(16,35,63,0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+  }
+  .carrossel-btn:hover{ background: var(--coral); }
+  #btnPrev{ left: 12px; }
+  #btnNext{ right: 12px; }
+
+  .dots{
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1rem;
+  }
+  .dot{
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #c9d2da;
+    cursor: pointer;
+  }
+  .dot.active{ background: var(--teal); }
+
+  footer.rodape{
+    background: var(--navy);
+    color: var(--off);
+    text-align: center;
+    padding: 1.5rem;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  @media (max-width: 992px){
+    #menuLateral{ display: none; }
+    nav.top-mobile{ display: block; }
+  }
+</style>
+</head>
+<body>
+
+<div id="menuLateral" class="hide-on-med-and-down" style="position:fixed; top:0; left:0; height:100vh;">
+  <span class="brand">📖 BiblioTech</span>
+  <ul>
+    <li><a class="active-link" href="pessoa2-galeria.html"><i class="material-icons left">collections</i>Galeria</a></li>
+    <li><a href="pessoa2-reserva.html"><i class="material-icons left">event_available</i>Reservar</a></li>
+    <li><a href="#sobre"><i class="material-icons left">info</i>Sobre</a></li>
+  </ul>
+</div>
+
+<nav class="top-mobile hide-on-large-only">
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo" style="margin-left:1rem; color: var(--teal);">📖 BiblioTech</a>
+    <a href="#" data-target="menuMobile" class="sidenav-trigger" style="margin-right:1rem;"><i class="material-icons">menu</i></a>
+  </div>
+</nav>
+<ul class="sidenav" id="menuMobile">
+  <li><a href="pessoa2-galeria.html">Galeria</a></li>
+  <li><a href="pessoa2-reserva.html">Reservar</a></li>
+  <li><a href="#sobre">Sobre</a></li>
+</ul>
+
+<main style="margin-left: 250px;" id="conteudoPrincipal">
+  <section class="hero-galeria">
+    <h1>Galeria de capas</h1>
+    <p>Navegue pelas obras em destaque do nosso acervo digital.</p>
+  </section>
+
+  <div class="carrossel-wrap">
+    <div class="carrossel">
+      <div class="carrossel-track" id="track">
+        <div class="slide slide-1">
+          <div class="capa">📗</div>
+          <h3>A Estrada</h3>
+          <p>Cormac McCarthy · Ficção</p>
+        </div>
+        <div class="slide slide-2">
+          <div class="capa">📕</div>
+          <h3>Cem Anos de Solidão</h3>
+          <p>Gabriel García Márquez · Realismo mágico</p>
+        </div>
+        <div class="slide slide-3">
+          <div class="capa">📘</div>
+          <h3>Sapiens</h3>
+          <p>Yuval Noah Harari · Não ficção</p>
+        </div>
+        <div class="slide slide-4">
+          <div class="capa">📙</div>
+          <h3>O Nome do Vento</h3>
+          <p>Patrick Rothfuss · Fantasia</p>
+        </div>
+      </div>
+      <button class="carrossel-btn" id="btnPrev"><i class="material-icons">chevron_left</i></button>
+      <button class="carrossel-btn" id="btnNext"><i class="material-icons">chevron_right</i></button>
+    </div>
+    <div class="dots" id="dots"></div>
+  </div>
+
+  <section id="sobre" style="max-width: 700px; margin: 0 auto 3rem; padding: 0 1.5rem;">
+    <h2 style="color: var(--navy); font-size: 1.5rem; margin-bottom: 0.75rem; border-top: 1px solid #dde3e8; padding-top: 2rem;">Sobre o projeto</h2>
+    <p style="line-height: 1.6; color: var(--slate);">
+      A BiblioTech é uma plataforma digital criada como trabalho escolar para apresentar
+      o acervo de uma biblioteca em formato de galeria e permitir que qualquer pessoa
+      reserve um livro para retirada.
+    </p>
+  </section>
+</main>
+
+<footer class="rodape" style="margin-left:250px;" id="rodapeFooter">
+  <p>BiblioTech — plataforma digital do acervo · Trabalho em dupla</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    M.Sidenav.init(document.querySelectorAll('.sidenav'));
+
+    function ajustarLayout(){
+      const semMenu = window.innerWidth <= 992;
+      document.getElementById('conteudoPrincipal').style.marginLeft = semMenu ? '0' : '250px';
+      document.getElementById('rodapeFooter').style.marginLeft = semMenu ? '0' : '250px';
+    }
+    ajustarLayout();
+    window.addEventListener('resize', ajustarLayout);
+  });
+
+  const track = document.getElementById('track');
+  const slides = document.querySelectorAll('.slide');
+  const dotsWrap = document.getElementById('dots');
+  let atual = 0;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => irPara(i));
+    dotsWrap.appendChild(dot);
+  });
+  const dots = document.querySelectorAll('.dot');
+
+  function irPara(i){
+    atual = (i + slides.length) % slides.length;
+    track.style.transform = `translateX(-${atual * 100}%)`;
+    dots.forEach(d => d.classList.remove('active'));
+    dots[atual].classList.add('active');
+  }
+
+  document.getElementById('btnPrev').addEventListener('click', () => irPara(atual - 1));
+  document.getElementById('btnNext').addEventListener('click', () => irPara(atual + 1));
+
+  setInterval(() => irPara(atual + 1), 5000);
+</script>
+
+</body>
+</html>
