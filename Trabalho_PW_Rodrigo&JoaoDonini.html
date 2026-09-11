@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BiblioTech · Reservar</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<style>
+  :root{
+    --navy: #10233F;
+    --teal: #1FA2A6;
+    --off: #F2F5F7;
+    --coral: #EF6461;
+    --slate: #45526B;
+  }
+  body{
+    background: var(--off);
+    color: var(--navy);
+    font-family: 'Work Sans', sans-serif;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  h1,.brand{ font-family: 'Space Grotesk', sans-serif; }
+
+  #menuLateral{
+    width: 250px;
+    background: var(--navy);
+    color: var(--off);
+  }
+  #menuLateral .brand{
+    padding: 1.5rem 1.25rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--teal);
+    display: block;
+  }
+  #menuLateral li a{ color: var(--off) !important; font-family: 'Work Sans', sans-serif; }
+  #menuLateral li a:hover{ background: var(--slate); }
+  #menuLateral li a.active-link{ border-left: 4px solid var(--coral); background: rgba(239,100,97,0.1); }
+  #menuLateral ul{
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0;
+  }
+  #menuLateral li a{
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.9rem 1.25rem;
+    line-height: 1;
+  }
+  #menuLateral li a i.material-icons{
+    width: 24px;
+    text-align: center;
+    margin: 0;
+    float: none;
+    font-size: 1.3rem;
+  }
+
+  nav.top-mobile{ background: var(--navy) !important; display: none; }
+  main{ flex: 1; }
+
+  .hero-form{
+    background: linear-gradient(120deg, var(--navy), var(--slate));
+    color: var(--off);
+    padding: 3rem 2rem;
+    border-bottom: 5px solid var(--coral);
+  }
+  .hero-form h1{ font-size: 2.2rem; font-weight:700; }
+
+  .form-card{
+    max-width: 620px;
+    margin: -1.5rem auto 3rem;
+    background: white;
+    border-radius: 6px;
+    padding: 2rem 2.25rem;
+    box-shadow: 0 10px 30px rgba(16,35,63,0.15);
+    border-top: 5px solid var(--teal);
+  }
+  .input-field label{ color: var(--slate); }
+  .input-field input:focus + label,
+  .input-field textarea:focus + label{ color: var(--teal) !important; }
+  .input-field input:focus,
+  .input-field textarea:focus,
+  .input-field select:focus{
+    border-bottom: 1px solid var(--teal) !important;
+    box-shadow: 0 1px 0 0 var(--teal) !important;
+  }
+  .btn-reservar{
+    background-color: var(--coral) !important;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .btn-reservar:hover{ background-color: #d8534f !important; }
+
+  #modalReserva .modal-content{ }
+  #modalReserva h4{
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  #modalReserva dt{ font-weight: 600; color: var(--slate); }
+  .modal-footer{ background: var(--off) !important; }
+
+  footer.rodape{
+    background: var(--navy);
+    color: var(--off);
+    text-align: center;
+    padding: 1.5rem;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  @media (max-width: 992px){
+    #menuLateral{ display: none; }
+    nav.top-mobile{ display: block; }
+  }
+</style>
+</head>
+<body>
+
+<div id="menuLateral" class="hide-on-med-and-down" style="position:fixed; top:0; left:0; height:100vh;">
+  <span class="brand">📖 BiblioTech</span>
+  <ul>
+    <li><a href="pessoa2-galeria.html"><i class="material-icons left">collections</i>Galeria</a></li>
+    <li><a class="active-link" href="pessoa2-reserva.html"><i class="material-icons left">event_available</i>Reservar</a></li>
+    <li><a href="pessoa2-galeria.html#sobre"><i class="material-icons left">info</i>Sobre</a></li>
+  </ul>
+</div>
+
+<nav class="top-mobile hide-on-large-only">
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo" style="margin-left:1rem; color: var(--teal);">📖 BiblioTech</a>
+    <a href="#" data-target="menuMobile" class="sidenav-trigger" style="margin-right:1rem;"><i class="material-icons">menu</i></a>
+  </div>
+</nav>
+<ul class="sidenav" id="menuMobile">
+  <li><a href="pessoa2-galeria.html">Galeria</a></li>
+  <li><a href="pessoa2-reserva.html">Reservar</a></li>
+  <li><a href="pessoa2-galeria.html#sobre">Sobre</a></li>
+</ul>
+
+<main style="margin-left: 250px;" id="conteudoPrincipal">
+  <section class="hero-form">
+    <h1>Reservar um livro</h1>
+    <p style="max-width:46ch; opacity:0.9; line-height:1.6;">Preencha os dados abaixo para reservar sua próxima leitura.</p>
+  </section>
+
+  <div class="form-card">
+    <form id="formReserva">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="nome" type="text" required>
+          <label for="nome">Nome completo</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" required>
+          <label for="email">E-mail</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <select id="livroDesejado">
+            <option value="A Estrada">A Estrada</option>
+            <option value="Cem Anos de Solidão">Cem Anos de Solidão</option>
+            <option value="Sapiens">Sapiens</option>
+            <option value="O Nome do Vento">O Nome do Vento</option>
+          </select>
+          <label>Livro desejado</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="dataRetirada" type="date" required>
+          <label for="dataRetirada" class="active">Data desejada para retirada</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="mensagem" class="materialize-textarea"></textarea>
+          <label for="mensagem">Mensagem (opcional)</label>
+        </div>
+      </div>
+      <button type="submit" class="btn waves-effect waves-light btn-reservar" style="width:100%;">
+        Enviar reserva <i class="material-icons right">send</i>
+      </button>
+    </form>
+  </div>
+</main>
+
+<footer class="rodape" style="margin-left:250px;" id="rodapeFooter">
+  <p>BiblioTech — plataforma digital do acervo · Trabalho em dupla</p>
+</footer>
+
+<div id="modalReserva" class="modal">
+  <div class="modal-content">
+    <h4><i class="material-icons" style="color:var(--teal);">check_circle</i>Reserva enviada!</h4>
+    <dl>
+      <dt>Nome:</dt><dd id="resNome"></dd>
+      <dt>E-mail:</dt><dd id="resEmail"></dd>
+      <dt>Livro:</dt><dd id="resLivro"></dd>
+      <dt>Data de retirada:</dt><dd id="resData"></dd>
+    </dl>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect btn-flat">Fechar</a>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    M.Sidenav.init(document.querySelectorAll('.sidenav'));
+    M.FormSelect.init(document.querySelectorAll('select'));
+    const modalInstance = M.Modal.init(document.getElementById('modalReserva'));
+
+    function ajustarLayout(){
+      const semMenu = window.innerWidth <= 992;
+      document.getElementById('conteudoPrincipal').style.marginLeft = semMenu ? '0' : '250px';
+      document.getElementById('rodapeFooter').style.marginLeft = semMenu ? '0' : '250px';
+    }
+    ajustarLayout();
+    window.addEventListener('resize', ajustarLayout);
+
+    document.getElementById('formReserva').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const nome = document.getElementById('nome').value.trim();
+      const email = document.getElementById('email').value.trim();
+
+      if (!nome || !email) {
+        M.toast({html: 'Preencha nome e e-mail para continuar.'});
+        return;
+      }
+
+      document.getElementById('resNome').textContent = nome;
+      document.getElementById('resEmail').textContent = email;
+      document.getElementById('resLivro').textContent = document.getElementById('livroDesejado').value;
+      document.getElementById('resData').textContent = document.getElementById('dataRetirada').value || 'Não informada';
+
+      modalInstance.open();
+      this.reset();
+      M.FormSelect.init(document.querySelectorAll('select'));
+      M.updateTextFields();
+    });
+  });
+</script>
+
+</body>
+</html>
